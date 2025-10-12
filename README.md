@@ -1,1 +1,1 @@
-# homeworks-cpp
+# Homeworks for Netology
