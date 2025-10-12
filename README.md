@@ -1,1 +1,1 @@
-# Homeworks for Netology
+# Homeworks
