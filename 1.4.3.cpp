@@ -1,17 +1,17 @@
 #include <iostream>
 
 int main() {
-    int number{};
+    int integer{};
     std::cout << "Enter an integer: ";
-    std::cin >> number;
+    std::cin >> integer;
 
-    if (number < 0) {
-        number = -number;
+    if (integer < 0) {
+        integer = -integer;
     }
 
     for (int multiplier{1}; multiplier <= 10; multiplier++) {
-        int result = number * multiplier;
-        std::cout << number << " * " << multiplier << " = " << result << std::endl;
+        int result = integer * multiplier;
+        std::cout << integer << " * " << multiplier << " = " << result << std::endl;
     }
 
     return 0;
