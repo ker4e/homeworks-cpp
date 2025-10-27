@@ -5,7 +5,7 @@ int main() {
     int sum{0};
 
     do {
-        std::cout << "Enter an integer or '0' to finish: " << std::endl;
+        std::cout << "Enter an integer or '0' to finish: ";
         std::cin >> number;
 
         sum += number;
