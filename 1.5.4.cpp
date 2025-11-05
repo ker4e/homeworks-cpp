@@ -1,4 +1,4 @@
-#include <iostream>#include <iostream>
+#include <iostream>
 
 int main() {
     const int size = 10;
@@ -10,15 +10,22 @@ int main() {
     }
     std::cout << "\n";
 
-    for (int i = 0; i < size - 1; ++i) {
-        for (int j = 0; j < size - i - 1; ++j) {
-            if (numbers[j] < numbers[j + 1]) { 
-                int temp = numbers[j];
-                numbers[j] = numbers[j + 1];
-                numbers[j + 1] = temp;
+    bool swapped; 
+    int temp;
+
+    do {
+        swapped = false; 
+
+        for (int i = size - 1; i > 0; --i) { 
+            if (numbers[i] < numbers[i - 1]) { 
+                temp = numbers[i];
+                numbers[i] = numbers[i - 1];
+                numbers[i - 1] = temp;
+                swapped = true; 
             }
         }
-    }
+
+    } while (swapped); 
 
     std::cout << "\nArray after reverse bubble sort:\n";
     for (int i = 0; i < size; ++i) {
