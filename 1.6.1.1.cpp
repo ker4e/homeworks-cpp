@@ -3,7 +3,7 @@
 int twoSum ( int first, int second );
 int twoDiff ( int first, int second );
 int twoMultiplication ( int first, int second );
-int twoDivision ( int first, int second );
+double twoDivision ( double first, double second );
 
 int main() {
   int first {5};
@@ -38,9 +38,9 @@ int mult { first * second };
   return mult;
 }
 
-int twoDivision ( int first, int second )
+double twoDivision ( double first, double second )
 {
-int division { first / second };
+double division { first / second };
   std::cout << first << " / " << second << " = " << division << std::endl;
   return division;
 }
