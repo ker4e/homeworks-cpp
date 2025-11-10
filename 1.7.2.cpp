@@ -1,6 +1,6 @@
 #include <iostream>
 
-int swap(int& first, int& second);
+void swap(int& first, int& second);
 
 int main(int argc, char** argv)
 {
@@ -15,10 +15,8 @@ int main(int argc, char** argv)
 	return 0;
 }
 
-int swap(int& first, int& second) {
+void swap(int& first, int& second) {
 	int third{ first };
 	first = second;
 	second = third;
-
-	return first, second;
 }
