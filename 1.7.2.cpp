@@ -1,0 +1,24 @@
+#include <iostream>
+
+int swap(int& first, int& second);
+
+int main(int argc, char** argv)
+{
+	int a = 5, b = 8;
+
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+
+	swap(a, b);
+
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+
+	return 0;
+}
+
+int swap(int& first, int& second) {
+	int third{ first };
+	first = second;
+	second = third;
+
+	return first, second;
+}
