@@ -12,7 +12,7 @@ int main()
 	long double variable7{78.684};
 	bool variable8{ true };
 
-	std::cout << "Int:     " << variable << '\t' << &variable << '\t' << sizeof(variable) << std::endl;
+	std::cout << "Int:         " << variable << '\t' << &variable << '\t' << sizeof(variable) << std::endl;
 	std::cout << "Short:       " << variable2 << '\t' << &variable2 << '\t' << sizeof(variable2) << std::endl;
 	std::cout << "Long:        " << variable3 << '\t' << &variable3 << '\t' << sizeof(variable3) << std::endl;
 	std::cout << "Long long:   " << variable4 << '\t' << &variable4 << '\t' << sizeof(variable4) << std::endl;
