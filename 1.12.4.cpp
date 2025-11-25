@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 
 int** createTwoDinArray(int rows, int columns);
 void reverseTwoDinArray(int** matrix, int rows, int columns);
