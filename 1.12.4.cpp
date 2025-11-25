@@ -14,7 +14,6 @@ int main()
 		ofile << "17 9 4 6" << std::endl;
 		ofile << "1 36 5 3" << std::endl;
 		ofile << "4 7 8 47" << std::endl;
-		ofile << "9 5 25 5" << std::endl;
 	}
 	ofile.close();
 
