@@ -14,7 +14,7 @@ void deletePlayingField(char** field, int rows);
 int main()
 {
 	std::ofstream field{ "field.txt" };
-	if (field.is_open()) 
+	if (field.is_open())
 	{
 		field << "20 30" << std::endl;
 		field << "2 3" << std::endl;
@@ -31,7 +31,7 @@ int main()
 	field.close();
 
 	std::ifstream fieldOut{ "field.txt" };
-	if (fieldOut.is_open()) 
+	if (fieldOut.is_open())
 	{
 		int rows{};
 		int columns{};
@@ -48,13 +48,13 @@ int main()
 
 		int row{};
 		int column{};
-		
+
 		while (fieldOut >> row >> column) {
 			playingField[row][column] = '*';
 		}
-   
+
 		char** nextField{ createPlayingField(rows, columns) }; // следующее поле
-		
+
 		printPlayingField(playingField, rows, columns);
 		Sleep(3000);
 		std::system("cls");
@@ -75,7 +75,7 @@ int main()
 	return EXIT_SUCCESS;
 }
 
-char** createPlayingField(int rows, int columns) 
+char** createPlayingField(int rows, int columns)
 {
 	char** playingField{ new char* [rows] };
 	for (int row{}; row < rows; ++row) {
@@ -85,7 +85,7 @@ char** createPlayingField(int rows, int columns)
 	return playingField;
 }
 
-void printPlayingField(char** field, int rows, int columns) 
+void printPlayingField(char** field, int rows, int columns)
 {
 	static int generation{ 1 };
 	int liveCellCounter{};
@@ -101,7 +101,7 @@ void printPlayingField(char** field, int rows, int columns)
 	++generation;
 }
 
-int counterNeighbors(char** field, int rows, int columns, int row, int column) 
+int counterNeighbors(char** field, int rows, int columns, int row, int column)
 {
 	int counter{ 0 };
 
@@ -139,7 +139,7 @@ bool checkingEnd(char** field, char** nextField, int rows, int columns, int& ali
 		std::cout << "All cells are dead. Game over!!!" << std::endl;
 		return false;
 	}
-	
+
 	bool fieldsEqual = true;
 	for (int row = 0; row < rows && fieldsEqual; ++row) {
 		for (int column = 0; column < columns; ++column) {
@@ -154,12 +154,12 @@ bool checkingEnd(char** field, char** nextField, int rows, int columns, int& ali
 		std::cout << "The world has stagnated. Game over!!!" << std::endl;
 		return false;
 	}
-		
+
 	return true;
-	
+
 }
 
-void swapField(char** field, char** nextField, int rows, int columns) 
+void swapField(char** field, char** nextField, int rows, int columns)
 {
 	for (int row{}; row < rows; ++row) {
 		for (int column{}; column < columns; ++column) {
@@ -170,9 +170,9 @@ void swapField(char** field, char** nextField, int rows, int columns)
 	}
 }
 
-int gameProcess(char** field, char** nextField, int rows, int columns, int& aliveCells) 
+int gameProcess(char** field, char** nextField, int rows, int columns, int& aliveCells)
 {
-	
+
 	for (int row{}; row < rows; ++row) {
 		for (int column{}; column < columns; ++column) {
 			int neighbords = counterNeighbors(field, rows, columns, row, column);
@@ -180,7 +180,7 @@ int gameProcess(char** field, char** nextField, int rows, int columns, int& aliv
 			//Для мертвой клетки
 			if (field[row][column] == '-') {
 				if (neighbords == 3) {
-					nextField[row][column] = '*'; 
+					nextField[row][column] = '*';
 				}
 				else {
 					nextField[row][column] = '-';
@@ -197,13 +197,14 @@ int gameProcess(char** field, char** nextField, int rows, int columns, int& aliv
 			}
 		}
 	}
-	
-	swapField(field, nextField, rows, columns);
+
 	printPlayingField(field, rows, columns);
 
 	if (!checkingEnd(field, nextField, rows, columns, aliveCells)) {
 		aliveCells = 0; // остановка игры
 	}
+
+	swapField(field, nextField, rows, columns);
 
 	return aliveCells;
 }
