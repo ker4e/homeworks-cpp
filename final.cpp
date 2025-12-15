@@ -6,9 +6,9 @@
 char** createPlayingField(int rows, int columns);
 void printPlayingField(char** field, int rows, int columns);
 int counterNeighbors(char** field, int rows, int columns, int row, int column);
-bool checkingEnd(char** field, char** nextField, int rows, int columns, int& aliveSells);
-void swapField(char** field, char** nextField, int rows, int columns);
-int gameProcess(char** field, char** nextField, int rows, int columns, int& aliveCells);
+bool checkingEnd(char** field, char** nextField, int rows, int columns, int& aliveCells);
+void swapField(char**& field, char**& nextField);
+int gameProcess(char**& field, char**& nextField, int rows, int columns, int& aliveCells);
 void deletePlayingField(char** field, int rows);
 
 int main()
@@ -159,7 +159,7 @@ bool checkingEnd(char** field, char** nextField, int rows, int columns, int& ali
 
 }
 
-void swapField(char** field, char** nextField, int rows, int columns)
+/*void swapField(char** field, char** nextField, int rows, int columns)
 {
 	for (int row{}; row < rows; ++row) {
 		for (int column{}; column < columns; ++column) {
@@ -169,8 +169,16 @@ void swapField(char** field, char** nextField, int rows, int columns)
 		}
 	}
 }
+*/
 
-int gameProcess(char** field, char** nextField, int rows, int columns, int& aliveCells)
+void swapField(char**& field, char**& nextField)
+{
+	char** temp = field;
+	field = nextField;
+	nextField = temp;
+}
+
+int gameProcess(char**& field, char**& nextField, int rows, int columns, int& aliveCells)
 {
 
 	for (int row{}; row < rows; ++row) {
@@ -198,13 +206,13 @@ int gameProcess(char** field, char** nextField, int rows, int columns, int& aliv
 		}
 	}
 
-	printPlayingField(field, rows, columns);
+	printPlayingField(nextField, rows, columns);
 
 	if (!checkingEnd(field, nextField, rows, columns, aliveCells)) {
 		aliveCells = 0; // остановка игры
 	}
 
-	swapField(field, nextField, rows, columns);
+	swapField(field, nextField);
 
 	return aliveCells;
 }
